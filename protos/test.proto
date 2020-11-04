@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+// Unary request.
+message Request {
+    string event = 1;
+    google.protobuf.Any payload = 2;
+
+}
+
+// Unary response, as configured by the request.
+message Response {
+    bool status = 1;
+}
+
+service TestService {
+  // One request followed by one response.
+  rpc UnaryCall(Request) returns (Response);
+}
